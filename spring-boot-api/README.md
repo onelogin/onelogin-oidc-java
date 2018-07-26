@@ -15,7 +15,7 @@ You can pull the source of this sample and change the client id, secret, &amp; s
 Create a new directory for your app.
 
 ```sh
-mkdir spring-boot-web && cd spring-boot-web
+mkdir spring-boot-api && cd spring-boot-api
 ```
 
 Then download a Spring Boot starter web app with security enabled.
@@ -29,12 +29,13 @@ Add the following dependencies to `pom.xml`.
 ```xml
 <dependency>
     <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-oauth2-client</artifactId>
+    <artifactId>spring-security-oauth2</artifactId>
 </dependency>
 
 <dependency>
-  <groupId>org.springframework.security</groupId>
-  <artifactId>spring-security-oauth2-jose</artifactId>
+    <groupId>com.auth0</groupId>
+    <artifactId>jwks-rsa</artifactId>
+    <version>0.3.0</version>
 </dependency>
 ```
 
@@ -58,14 +59,16 @@ spring:
             redirect-uri-template: http://localhost:8080/login/oauth2/code/onelogin
         provider:
           onelogin:
-            authorization-uri: https://openid-connect.onelogin.com/oidc/auth
-            token-uri: https://openid-connect.onelogin.com/oidc/token
-            user-info-uri: https://openid-connect.onelogin.com/oidc/me
-            jwk-set-uri: https://openid-connect.onelogin.com/oidc/certs
+            authorization-uri: https://your-sub-domain.onelogin.com/oidc/auth
+            token-uri: https://your-sub-domain.onelogin.com/oidc/token
+            user-info-uri: https://your-sub-domain.onelogin.com/oidc/me
+            jwk-set-uri: https://your-sub-domain.onelogin.com/oidc/certs
             user-name-attribute: sub
 ```
 
 Make sure you replace `your-onelogin-oidc-app-client-id` and `your-onelogin-oidc-app-client-secret` with the values provided when you created your OpenId Connect app via the OneLogin portal.
+
+Change `your-sub-domain` to match the subdomain of your OneLogin portal.
 
 The `redirect-uri-template` should match the redirect uri that you have specified in your OneLogin OpenId Connect app configuration.
 
