@@ -1,21 +1,17 @@
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          onelogin:
-            client-name: OneLogin
-            client-id: your-onelogin-oidc-app-client-id
-            client-secret: your-onelogin-oidc-app-client-secret
-            provider: onelogin
-            scope: openid profile
-            client-authentication-method: basic
-            authorization-grant-type: authorization_code
-            redirect-uri-template: http://localhost:8080/login/oauth2/code/onelogin
-        provider:
-          onelogin:
-            authorization-uri: https://openid-connect.onelogin.com/oidc/auth
-            token-uri: https://openid-connect.onelogin.com/oidc/token
-            user-info-uri: https://openid-connect.onelogin.com/oidc/me
-            jwk-set-uri: https://openid-connect.onelogin.com/oidc/certs
-            user-name-attribute: sub
+security:
+  oauth2:
+    client:
+      clientId: your-onelogin-oidc-app-client-id
+      clientSecret: your-onelogin-oidc-app-client-secret
+      accessTokenUri: https://openid-connect.onelogin.com/oidc/token
+      userAuthorizationUri: https://openid-connect.onelogin.com/oidc/auth
+      tokenName: access_token
+      authorizedGrantTypes: authorization_code
+      authenticationScheme: form
+      clientAuthenticationScheme: form
+      scope: openid,profile,email
+    resource:
+      userInfoUri: https://openid-connect.onelogin.com/oidc/me
+
+server:
+  port : 8081
