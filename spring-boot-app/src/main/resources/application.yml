@@ -3,15 +3,13 @@ security:
     client:
       clientId: your-onelogin-oidc-app-client-id
       clientSecret: your-onelogin-oidc-app-client-secret
-      accessTokenUri: https://openid-connect.onelogin.com/oidc/token
-      userAuthorizationUri: https://openid-connect.onelogin.com/oidc/auth
+      accessTokenUri: https://<subdomain>.onelogin.com/oidc/2/token
+      userAuthorizationUri: https://<subdomain>.onelogin.com/oidc/2/auth
       tokenName: access_token
       authorizedGrantTypes: authorization_code
-      authenticationScheme: form
-      clientAuthenticationScheme: form
       scope: openid,profile,email
     resource:
-      userInfoUri: https://openid-connect.onelogin.com/oidc/me
+      userInfoUri: https://<subdomain>.onelogin.com/oidc/2/me
 
 server:
   port : 8081
