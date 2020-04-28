@@ -71,20 +71,20 @@ security:
     client:
       clientId: your-onelogin-oidc-app-client-id
       clientSecret: your-onelogin-oidc-app-client-secret
-      accessTokenUri: http://openid-connect.onelogin.com/oidc/token
-      userAuthorizationUri: http://openid-connect.onelogin.com/oidc/auth
+      accessTokenUri: http://<subdomain>.onelogin.com/oidc/2/token
+      userAuthorizationUri: http://<subdomain>.onelogin.com/oidc/2/auth
       tokenName: access_token
       authorizedGrantTypes: authorization_code
       authenticationScheme: form
       clientAuthenticationScheme: form
       scope: openid,profile,email
     resource:
-      userInfoUri: http://openid-connect.onelogin.com/oidc/me
+      userInfoUri: http://<subdomain>.onelogin.com/oidc/2/me
 server:
   port : 8081
 ```
 
-Make sure you replace `your-onelogin-oidc-app-client-id` and `your-onelogin-oidc-app-client-secret` with the values provided when you created your OpenId Connect app via the OneLogin portal.
+Make sure you replace `subdomain`, `your-onelogin-oidc-app-client-id` and `your-onelogin-oidc-app-client-secret` with the values provided when you created your OpenId Connect app via the OneLogin portal.
 
 
 ### Step 4.
