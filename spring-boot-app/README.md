@@ -20,7 +20,7 @@ mkdir spring-boot-app && cd spring-boot-app
 
 Then download a Spring Boot starter web app with security enabled.
 ```sh
-curl start.spring.io/starter.tgz -d dependencies=web -d dependencies=security | tar -zxvf -
+curl start.spring.io/starter.tgz -L -d dependencies=web -d dependencies=security | tar -zxvf -
 ```
 
 ### Step 2.
