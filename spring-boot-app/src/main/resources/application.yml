@@ -5,6 +5,7 @@ security:
       clientSecret: your-onelogin-oidc-app-client-secret
       accessTokenUri: https://<subdomain>.onelogin.com/oidc/2/token
       userAuthorizationUri: https://<subdomain>.onelogin.com/oidc/2/auth
+      clientAuthenticationScheme: form
       tokenName: access_token
       authorizedGrantTypes: authorization_code
       scope: openid,profile,email
