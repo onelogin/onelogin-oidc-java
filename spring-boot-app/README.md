@@ -8,8 +8,16 @@ You will also need a OneLogin account. If you don't have one you can [create a f
 
 Most importantly you will need to create an OpenId Connect app in your OneLogin Admin portal. [You can read more about how to do that here](https://developers.onelogin.com/openid-connect/connect-to-onelogin).
 
+## Configure the OneLogin app
+In your OpenId Connect app in OneLogin:
+
+- On the **Configuration** tab, add `http://localhost:8081/login` as a **Redirect URI**. `@EnableOAuth2Sso` handles the login callback on `/login`, so OneLogin rejects the login with a redirect URI mismatch if this is missing.
+- On the **SSO** tab, set the Token Endpoint **Authentication Method** to **POST**. This matches `clientAuthenticationScheme: form` in `application.yml`. If you'd rather use **Basic**, remove that line instead.
+
 ## Setup
-You can pull the source of this sample and change the clientId and clientSecret in `app/src/main/resources/application.yml` or alternately follow these steps.
+You can pull the source of this sample and change the subdomain, clientId and clientSecret in `src/main/resources/application.yml` or alternately follow these steps.
+
+The steps below target Spring Boot 2.x and the `spring-security-oauth2-autoconfigure` library (`@EnableOAuth2Sso`). [start.spring.io](https://start.spring.io) now only generates newer Spring Boot versions, which that library doesn't support, so pulling the source is the simplest way to run this sample.
 
 ### Step 1.
 Create a new directory for your app.
@@ -63,7 +71,7 @@ Add the following dependencies to `pom.xml`.
 ```
 
 ### Step 3.
-Rename `app/src/main/resources/application.properties` to `app/src/main/resources/application.yml` and then paste in the following configuration.
+Rename `src/main/resources/application.properties` to `src/main/resources/application.yml` and then paste in the following configuration.
 
 ```yml
 security:
@@ -71,15 +79,14 @@ security:
     client:
       clientId: your-onelogin-oidc-app-client-id
       clientSecret: your-onelogin-oidc-app-client-secret
-      accessTokenUri: http://<subdomain>.onelogin.com/oidc/2/token
-      userAuthorizationUri: http://<subdomain>.onelogin.com/oidc/2/auth
+      accessTokenUri: https://<subdomain>.onelogin.com/oidc/2/token
+      userAuthorizationUri: https://<subdomain>.onelogin.com/oidc/2/auth
+      clientAuthenticationScheme: form
       tokenName: access_token
       authorizedGrantTypes: authorization_code
-      authenticationScheme: form
-      clientAuthenticationScheme: form
       scope: openid,profile,email
     resource:
-      userInfoUri: http://<subdomain>.onelogin.com/oidc/2/me
+      userInfoUri: https://<subdomain>.onelogin.com/oidc/2/me
 server:
   port : 8081
 ```
