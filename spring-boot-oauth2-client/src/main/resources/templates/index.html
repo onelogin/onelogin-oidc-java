@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>OneLogin OIDC Sample</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+	<main>
+		<h1>OneLogin OpenID Connect Sample</h1>
+		<div th:if="${user == null}">
+			<p>You are not signed in.</p>
+			<a class="button" th:href="@{/oauth2/authorization/onelogin}">Log in with OneLogin</a>
+		</div>
+		<div th:if="${user != null}">
+			<p>Signed in as <strong th:text="${user.fullName ?: user.subject}">user</strong>.</p>
+			<a class="button" th:href="@{/profile}">View profile</a>
+		</div>
+	</main>
+</body>
+</html>

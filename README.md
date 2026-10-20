@@ -2,7 +2,8 @@
 
 This repo contains Java sample apps that demonstrate the various OpenId Connect flows
 
-1. [Authorization Code Flow using Spring Security](spring-boot-app)
+1. [Authorization Code Flow using Spring Security OAuth2 Client (Spring Boot 4)](spring-boot-oauth2-client). Start here.
+2. [Authorization Code Flow using `@EnableOAuth2Sso` (Spring Boot 2.2)](spring-boot-app). Kept for existing apps; its Spring libraries are end of life.
 
 ## What can I use these for
 OpenId Connect is a great way to add user authentication to your application

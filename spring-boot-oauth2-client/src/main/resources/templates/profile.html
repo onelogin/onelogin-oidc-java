@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Profile - OneLogin OIDC Sample</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+	<main>
+		<h1 th:text="${user.fullName ?: user.subject}">user</h1>
+		<p th:if="${user.email != null}" th:text="${user.email}">email</p>
+
+		<h2>ID token claims</h2>
+		<table>
+			<tr th:each="claim : ${claims}">
+				<th th:text="${claim.key}">claim</th>
+				<td th:text="${claim.value}">value</td>
+			</tr>
+		</table>
+
+		<form th:action="@{/logout}" method="post">
+			<button class="button" type="submit">Log out</button>
+		</form>
+		<p><a th:href="@{/}">Home</a></p>
+	</main>
+</body>
+</html>

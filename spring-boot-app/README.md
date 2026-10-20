@@ -1,6 +1,8 @@
 # OneLogin OpenId Connect Spring Boot Sample
 This is a bare bones Spring Boot app that has been modified to support the OpenId Connect Authorization Code flow via OneLogin.
 
+> This sample uses Spring Boot 2.2 and `spring-security-oauth2-autoconfigure`, which are both end of life. For a new app, use [spring-boot-oauth2-client](../spring-boot-oauth2-client), which is built on Spring Security's current OAuth2 Client support.
+
 ## Prerequisites
 This sample uses Spring which requires [Java SDK 1.11+](https://www.java.com/) and [Apache Maven 3.6+](https://maven.apache.org/).
 

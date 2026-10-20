@@ -1,0 +1,44 @@
+body {
+	font-family: system-ui, sans-serif;
+	margin: 0;
+	padding: 2rem 1rem;
+	color: #1d1d1f;
+	background: #ffffff;
+}
+
+main {
+	max-width: 48rem;
+	margin: 0 auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1.5rem;
+}
+
+th, td {
+	text-align: left;
+	vertical-align: top;
+	padding: 0.4rem 0.6rem;
+	border-bottom: 1px solid #d2d2d7;
+	overflow-wrap: anywhere;
+}
+
+th {
+	width: 30%;
+	font-family: ui-monospace, monospace;
+	font-weight: normal;
+}
+
+.button {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	border: 0;
+	border-radius: 4px;
+	background: #1c1f2a;
+	color: #ffffff;
+	font: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
