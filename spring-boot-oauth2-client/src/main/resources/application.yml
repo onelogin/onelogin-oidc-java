@@ -1,0 +1,12 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          onelogin:
+            client-id: ${ONELOGIN_OIDC_CLIENT_ID}
+            client-secret: ${ONELOGIN_OIDC_CLIENT_SECRET}
+            scope: openid,profile,email
+        provider:
+          onelogin:
+            issuer-uri: ${ONELOGIN_OIDC_ISSUER}
